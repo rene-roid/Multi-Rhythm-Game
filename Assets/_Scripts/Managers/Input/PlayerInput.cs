@@ -10,38 +10,38 @@ public class PlayerInput : MonoBehaviour
 
     private void Update() => FrameInput = Gather();
 
-    private PlayerInputActions _inputActions;
-    private InputAction _move, _mouseLeft, _mouseRight;
+    private PlayerInputActions inputActions;
+    private InputAction move, mouseLeft, mouseRight;
 
     private void Awake() {
-        _inputActions = new PlayerInputActions();
+        inputActions = new PlayerInputActions();
 
-        _move = _inputActions.Player.Move;
+        move = inputActions.Player.Move;
 
-        _mouseLeft = _inputActions.Player.MouseLeft;
-        _mouseRight = _inputActions.Player.MouseRight;
+        mouseLeft = inputActions.Player.MouseLeft;
+        mouseRight = inputActions.Player.MouseRight;
     }
 
     private void OnEnable() {
-        _inputActions ??= new PlayerInputActions();
-        _inputActions.Enable();
+        inputActions ??= new PlayerInputActions();
+        inputActions.Enable();
     }
 
-    private void OnDisable() => _inputActions.Disable();
+    private void OnDisable() => inputActions.Disable();
 
     private FrameInput Gather() {
         if (Time.timeScale == 0) return new FrameInput();
 
         return new FrameInput {
-            Move = _move.ReadValue<Vector2>(),
+            Move = move.ReadValue<Vector2>(),
 
-            MouseLeft = _mouseLeft.WasPressedThisFrame(),
-            MouseLeftHeld = _mouseLeft.IsPressed(),
-            MouseLeftReleased = _mouseLeft.WasReleasedThisFrame(),
+            MouseLeft = mouseLeft.WasPressedThisFrame(),
+            MouseLeftHeld = mouseLeft.IsPressed(),
+            MouseLeftReleased = mouseLeft.WasReleasedThisFrame(),
 
-            MouseRight = _mouseRight.triggered,
-            MouseRightHeld = _mouseRight.IsPressed(),
-            MouseRightReleased = _mouseRight.WasReleasedThisFrame()
+            MouseRight = mouseRight.triggered,
+            MouseRightHeld = mouseRight.IsPressed(),
+            MouseRightReleased = mouseRight.WasReleasedThisFrame()
         };
     }
 }

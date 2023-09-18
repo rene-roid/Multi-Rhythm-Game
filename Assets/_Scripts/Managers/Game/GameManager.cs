@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace rene_roid {    
+namespace _Scripts.Managers.Game {    
     public class GameManager : MonoBehaviour
     {
         void Start()
