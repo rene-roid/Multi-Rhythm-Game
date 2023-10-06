@@ -1,9 +1,8 @@
 using _Scripts.Units.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace _Scripts.Managers.Blocks.Runner {
-    public class RunnerBlock : MonoBehaviour
+namespace _Scripts.Managers.Blocks.Direction {
+    public class DirectionBlock : MonoBehaviour
     {
         #region Private Variables
         private Rigidbody rb;
@@ -37,6 +36,7 @@ namespace _Scripts.Managers.Blocks.Runner {
         [Header("Block Settings")]
         [SerializeField] private float speed = 5f;
         [SerializeField] private float damage = 10f;
+        [SerializeField] private Vector3 direction = Vector3.left;
 
         private void StartBlock(){
             rb.isKinematic = true;
@@ -46,13 +46,24 @@ namespace _Scripts.Managers.Blocks.Runner {
         
         private void MoveBlock(){
             var step = speed * Time.deltaTime;
-            var direction = Vector3.left;
             
             transform.position += direction * (step * 2);
         }
         
         public void BlockHit(){
             Destroy(gameObject);
+        }
+        
+        public void SetDirection(Vector3 dir){
+            direction = dir;
+        }
+        
+        public void SetSpeed(float spd){
+            speed = spd;
+        }
+        
+        public void SetDamage(float dmg){
+            damage = dmg;
         }
         #endregion
     }

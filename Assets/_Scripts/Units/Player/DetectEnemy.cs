@@ -1,5 +1,5 @@
-using _Scripts.Managers.Blocks.Runner;
 using System.Collections.Generic;
+using _Scripts.Managers.Blocks.Direction;
 using UnityEngine;
 
 namespace _Scripts.Units.Player {
@@ -32,7 +32,7 @@ namespace _Scripts.Units.Player {
             
             var enemy = enemies[0];
             enemies.Remove(enemy);
-            enemy.GetComponent<RunnerBlock>().BlockHit();
+            enemy.GetComponent<DirectionBlock>().BlockHit();
             
         }
     }

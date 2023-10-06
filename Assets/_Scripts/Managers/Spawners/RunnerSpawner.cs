@@ -1,4 +1,4 @@
-using _Scripts.Managers.Blocks.Runner;
+using _Scripts.Managers.Blocks.Direction;
 using UnityEngine;
 
 namespace _Scripts.Managers.Spawners {
@@ -7,14 +7,15 @@ namespace _Scripts.Managers.Spawners {
         [Header("Runner Settings")]
         [SerializeField] private GameObject blockPrefab;
         [SerializeField] private float spawnRate = 1f;
+        [SerializeField] private Vector3 direction = Vector3.left;
         private float nextSpawn = 0f;
-        private RunnerBlock block;
+        private DirectionBlock block;
         
         [SerializeField] private Transform topSpawnPoint;
         [SerializeField] private Transform bottomSpawnPoint;
         
         private void Start(){
-            block = blockPrefab.GetComponentInChildren<RunnerBlock>();
+            block = blockPrefab.GetComponentInChildren<DirectionBlock>();
         }
         
         private void Update(){
@@ -26,7 +27,14 @@ namespace _Scripts.Managers.Spawners {
         
         private void SpawnBlock() {
             var spawnPosition = Random.Range(0, 2) == 0 ? topSpawnPoint.position : bottomSpawnPoint.position;
-            RunnerBlock newblock = Instantiate(block, spawnPosition, Quaternion.identity);
+            DirectionBlock newBlock = Instantiate(block, spawnPosition, Quaternion.identity);
+            newBlock.SetDirection(direction);
+        }
+        
+        private void OnDrawGizmos(){
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(topSpawnPoint.position, direction * 1);
+            Gizmos.DrawRay(bottomSpawnPoint.position, direction * 1);
         }
     }
 }
