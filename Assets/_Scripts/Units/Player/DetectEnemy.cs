@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using _Scripts.Managers.Blocks.Direction;
+using _Scripts.Units.Blocks.Direction;
 using UnityEngine;
 
 namespace _Scripts.Units.Player {

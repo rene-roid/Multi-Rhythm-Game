@@ -1,4 +1,4 @@
-using _Scripts.Managers.Blocks.Direction;
+using _Scripts.Units.Blocks.Direction;
 using UnityEngine;
 
 namespace _Scripts.Managers.Spawners {
@@ -19,18 +19,17 @@ namespace _Scripts.Managers.Spawners {
         }
         
         private void Update(){
-            if(!(Time.time > nextSpawn))
-                return;
-            nextSpawn = Time.time + spawnRate;
-            SpawnBlock();
+            // if(!(Time.time > nextSpawn))
+            //     return;
+            // nextSpawn = Time.time + spawnRate;
+            // SpawnBlock();
         }
         
-        private void SpawnBlock() {
-            var spawnPosition = Random.Range(0, 2) == 0 ? topSpawnPoint.position : bottomSpawnPoint.position;
+        public void SpawnBlock(int pos){
+            var spawnPosition = pos == 0 ? topSpawnPoint.position : bottomSpawnPoint.position;
             DirectionBlock newBlock = Instantiate(block, spawnPosition, Quaternion.identity);
             newBlock.SetDirection(direction);
         }
-        
         private void OnDrawGizmos(){
             Gizmos.color = Color.red;
             Gizmos.DrawRay(topSpawnPoint.position, direction * 1);

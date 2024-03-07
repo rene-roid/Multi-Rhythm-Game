@@ -407,6 +407,64 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &539260400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539260402}
+  - component: {fileID: 539260401}
+  m_Layer: 0
+  m_Name: Dodge Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &539260401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539260400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59557bb8f3f28848b20451ed4d41d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockPrefab: {fileID: 5233990106009774955, guid: d9f31d8dd746b6e4896b8e693229ae50, type: 3}
+  spawnRate: 0.5
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  endPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &539260402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539260400}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2071406755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558525077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -999,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 1316700194969385901, guid: 6ebe947f15537054f9cbd86081d1e057, type: 3}
   spawnRate: 1
+  direction: {x: -1, y: 0, z: 0}
   topSpawnPoint: {fileID: 850911825}
   bottomSpawnPoint: {fileID: 928759204}
 --- !u!1 &1190213840
@@ -1497,6 +1556,7 @@ MonoBehaviour:
   near: 0.3
   far: 1000
   orthographicSize: 5
+  speed: 0.25
 --- !u!114 &1629003922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,6 +1866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 539260402}
   - {fileID: 1094367636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1891,13 +1952,21 @@ PrefabInstance:
       propertyPath: enemyDetectors
       value: 
       objectReference: {fileID: 6221292052139848880}
+    - target: {fileID: 6606258709659096897, guid: 4909ca84cdfaf8f479d2d2411f2fa14b, type: 3}
+      propertyPath: runnerPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606258709659096897, guid: 4909ca84cdfaf8f479d2d2411f2fa14b, type: 3}
+      propertyPath: runnerPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6804156876969178568, guid: 4909ca84cdfaf8f479d2d2411f2fa14b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8957219811842717527, guid: 4909ca84cdfaf8f479d2d2411f2fa14b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8957219811842717527, guid: 4909ca84cdfaf8f479d2d2411f2fa14b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1999,7 +2068,7 @@ Transform:
   m_GameObject: {fileID: 6221292052139848880}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.25, y: 2.5, z: 0}
+  m_LocalPosition: {x: -6.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2040,7 +2109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &7373373372421381428
 BoxCollider:
   m_ObjectHideFlags: 0

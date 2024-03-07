@@ -1,4 +1,4 @@
-using _Scripts.Managers.Blocks.Dodge;
+using _Scripts.Units.Blocks.Dodge;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -28,14 +28,14 @@ namespace _Scripts.Managers.Spawners {
         }
 
         private void Update(){
-            if(!(Time.time > nextSpawn))
-                return;
-            nextSpawn = Time.time + spawnRate;
-            int spawnPositionIndex = Random.Range(0, spawnPoints.Length);
-            SpawnBlock(spawnPositionIndex);
+            // if(!(Time.time > nextSpawn))
+            //     return;
+            // nextSpawn = Time.time + spawnRate;
+            // int spawnPositionIndex = Random.Range(0, spawnPoints.Length);
+            // SpawnBlock(spawnPositionIndex);
         }
         
-        private void SpawnBlock(int spawnPositionIndex = 2) {
+        public void SpawnBlock(int spawnPositionIndex = 2) {
             var newPosition = spawnPoints[spawnPositionIndex].position + difference;
             DodgeBlock newblock = Instantiate(dodgeBlock, newPosition, Quaternion.identity);
             newblock.SetTargetPosition(endPoints[spawnPositionIndex].position + difference);

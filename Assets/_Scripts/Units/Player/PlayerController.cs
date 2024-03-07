@@ -47,6 +47,7 @@ namespace _Scripts.Units.Player {
             
             switch (playerMode){
                 case PlayerMode.Dodge:
+                    DodgeFixedUpdate();
                     break;
                 case PlayerMode.Runner:
                     RunnerFixedUpdate();
@@ -54,7 +55,19 @@ namespace _Scripts.Units.Player {
             }
         }
         #endregion
-        
+
+        public void SwitchPlayerMode(PlayerMode mode){
+            playerMode = mode;
+            
+            switch (playerMode){
+                case PlayerMode.Dodge:
+                    DodgeStart();
+                    break;
+                case PlayerMode.Runner:
+                    RunnerStart();
+                    break;
+            }
+        }
         
         private void InputController()
         {
@@ -81,6 +94,14 @@ namespace _Scripts.Units.Player {
 
         private void DodgeStart(){
             transform.position = dodgePositions[indexPosition];
+        }
+
+        private void DodgeFixedUpdate()
+        {
+            if (!isDodging)
+            {
+                transform.position = dodgePositions[indexPosition];
+            }
         }
 
         private void DodgeInput(){
@@ -114,6 +135,8 @@ namespace _Scripts.Units.Player {
                 var timer = 0f;
 
                 while (curr != target){
+                    if (playerMode == PlayerMode.Runner) yield break;
+
                     curr = Vector3.Lerp(initPos, target, timer / dodgeSpeed);
                     timer += Time.deltaTime;
                     transform.position = curr;
@@ -129,6 +152,7 @@ namespace _Scripts.Units.Player {
 
         #region Runner
         [Header("Runner Settings")]
+        [SerializeField] private Vector3 runnerPosition;
         [SerializeField] private float jumpDistance = 5f;
         [SerializeField] private float jumpSpeed = .1f;
         [SerializeField] private float jumpApexTime = .05f;
@@ -146,6 +170,8 @@ namespace _Scripts.Units.Player {
         private bool falling = false;
         
         private void RunnerStart(){
+            transform.position = runnerPosition;
+            
             groundPosition = transform.position;
             ceilingPosition = groundPosition + Vector3.up * jumpDistance;
             
@@ -223,7 +249,7 @@ namespace _Scripts.Units.Player {
             }
             
             IEnumerator Fall(){
-                if (falling || grounded) yield break;
+                if (falling || grounded || playerMode == PlayerMode.Dodge) yield break;
                 
                 falling = true;
                 
@@ -249,7 +275,10 @@ namespace _Scripts.Units.Player {
         }
 
         private void RunnerFixedUpdate(){
-            
+            if (grounded)
+            {
+                transform.position = groundPosition;
+            }
         }
         
         #endregion
