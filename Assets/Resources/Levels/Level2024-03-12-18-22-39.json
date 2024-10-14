@@ -1,0 +1,1264 @@
+{
+    "levelEvents": [
+        {
+            "time": 5.525020599365234,
+            "blockProperties": [],
+            "levelType": 0
+        },
+        {
+            "time": 9.087437629699707,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 9.919208526611329,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 10.580333709716797,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 10.814958572387696,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 11.134916305541993,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 11.241582870483399,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 11.66825008392334,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 12.009583473205567,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 12.372249603271485,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 12.670916557312012,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 12.969583511352539,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 13.289583206176758,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 13.609582901000977,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 13.758916854858399,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 14.100250244140625,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 14.548250198364258,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 14.953583717346192,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 15.50825023651123,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 16.084228515625,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 16.190855026245118,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 16.681167602539064,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 17.3209171295166,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 17.960729598999025,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 18.600500106811525,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 19.091020584106447,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 19.79483413696289,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 20.58389663696289,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 20.90370750427246,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 21.159624099731447,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 21.543333053588868,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 21.735313415527345,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 22.033979415893556,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 22.311311721801759,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 22.6099796295166,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 22.908645629882814,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 23.569978713989259,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 23.975313186645509,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 24.081979751586915,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 24.465978622436525,
+            "blockProperties": [
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 24.636646270751954,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 25.063312530517579,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 25.319313049316408,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 25.51131248474121,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 26.087312698364259,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 26.59931182861328,
+            "blockProperties": [
+                {
+                    "blockType": 2,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 6,
+                    "spawnPosition": 4,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 27.08997917175293,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 27.196645736694337,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 27.345979690551759,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 27.64464569091797,
+            "blockProperties": [
+                {
+                    "blockType": 5,
+                    "spawnPosition": 3,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 28.02864646911621,
+            "blockProperties": [
+                {
+                    "blockType": 3,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 29.05264663696289,
+            "blockProperties": [
+                {
+                    "blockType": 4,
+                    "spawnPosition": 2,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 29.777978897094728,
+            "blockProperties": [],
+            "levelType": 0
+        },
+        {
+            "time": 30.908645629882814,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 31.121978759765626,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 31.441978454589845,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 31.697978973388673,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 32.03931427001953,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 32.295291900634769,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 32.42327117919922,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 32.615272521972659,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 32.91389465332031,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 33.57518768310547,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 33.80983352661133,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 34.10845947265625,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 34.449771881103519,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 34.76972961425781,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 35.34568786621094,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.006980895996097,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.15629196166992,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.32693862915039,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.47627258300781,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.604270935058597,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 36.966896057128909,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 37.2868537902832,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 37.606834411621097,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 37.94814682006836,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 38.67341613769531,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 39.18537521362305,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 39.803977966308597,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 40.10262680053711,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 40.46527099609375,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 40.78522872924805,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                },
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 41.318519592285159,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 41.63850021362305,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 42.06512451171875,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 42.278438568115237,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 42.6197509765625,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 43.02504348754883,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 43.34502029418945,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 43.49433517456055,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 43.87831115722656,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 44.176979064941409,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 44.838314056396487,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 45.13697814941406,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 45.47831344604492,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 45.840980529785159,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 45.96897888183594,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 46.3103141784668,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 46.65164566040039,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 47.31298065185547,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 47.65431213378906,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 47.78231430053711,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 48.187644958496097,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 48.37964630126953,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 48.89164733886719,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 49.7236442565918,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 50.10764694213867,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 50.470314025878909,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 50.768978118896487,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 50.918312072753909,
+            "blockProperties": [
+                {
+                    "blockType": 1,
+                    "spawnPosition": 1,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        },
+        {
+            "time": 51.0889778137207,
+            "blockProperties": [
+                {
+                    "blockType": 0,
+                    "spawnPosition": 0,
+                    "speed": 3.0
+                }
+            ],
+            "levelType": 3
+        }
+    ]
+}
