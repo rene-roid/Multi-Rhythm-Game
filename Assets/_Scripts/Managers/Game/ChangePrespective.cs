@@ -37,6 +37,7 @@ namespace _Scripts.Managers.Game
             player.SwitchPlayerMode(PlayerMode.Runner);
             
             perspectiveScene.SetActive(false);
+            isOrtho = true;
         }
         
         public void ChangePerspective()
@@ -46,6 +47,7 @@ namespace _Scripts.Managers.Game
             player.SwitchPlayerMode(PlayerMode.Dodge);
             
             perspectiveScene.SetActive(true);
+            isOrtho = false;
         }
     }
 }
