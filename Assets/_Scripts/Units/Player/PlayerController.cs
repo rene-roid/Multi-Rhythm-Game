@@ -59,6 +59,7 @@ namespace _Scripts.Units.Player {
         public void SwitchPlayerMode(PlayerMode mode){
             if (playerMode == mode) return;
             
+            StopAllCoroutines();
             playerMode = mode;
             
             switch (playerMode){
@@ -95,7 +96,8 @@ namespace _Scripts.Units.Player {
                 grounded = true;
                 falling = false;
                 transform.position = runnerPosition;
-                groundPosition = transform.position;
+                groundPosition = runnerPosition;
+                visual.transform.localPosition = new Vector3(0, -0.5f, 0);
                 ceilingPosition = groundPosition + Vector3.up * jumpDistance;
             }
         }
@@ -274,7 +276,14 @@ namespace _Scripts.Units.Player {
                 RunnerMovement(1);
             }
             
-            if (FallInput() && !jumping && !grounded){
+            // Reset Jump if Airborne and there is an enemy
+            if (JumpInput() && !grounded && (jumping || falling) && topEnemyDetector.IsEnemyDetected()){
+                print("reset jump");
+                topEnemyDetector.AttackRunnerEnemy();
+                RunnerMovement(2);
+            }
+
+            if (FallInput() && !grounded){
                 print("fall");
                 bottomEnemyDetector.AttackRunnerEnemy();
                 RunnerMovement(-1);
@@ -303,15 +312,19 @@ namespace _Scripts.Units.Player {
         }
         
         private void RunnerMovement(int direction = 0){
+            StopAllCoroutines();
+            jumping = false;
+            falling = false;
+            grounded = true;
+            
             if (direction == 1) StartCoroutine(Jump());
-            else if(direction==-1){
-                //StopCoroutine(jump());
-                StartCoroutine(Fall());
-            }
+            else if(direction==-1) StartCoroutine(Fall());
+            else if (direction == 2) StartCoroutine(ResetJump());
             
             IEnumerator Jump(){
                 jumping = true;
                 grounded = false;
+                falling = false;
                 
                 transform.position = groundPosition;
                 
@@ -340,6 +353,8 @@ namespace _Scripts.Units.Player {
                 if (falling || grounded || playerMode == PlayerMode.Dodge) yield break;
                 
                 falling = true;
+                jumping = false;
+                grounded = false;
                 
                 transform.position = ceilingPosition;
                 
@@ -359,6 +374,19 @@ namespace _Scripts.Units.Player {
                 
                 grounded = true;
                 falling = false;
+            }
+
+            IEnumerator ResetJump()
+            {
+                jumping = true;
+                grounded = false;
+                falling = false;
+                
+                transform.position = ceilingPosition;
+                
+                yield return Helpers.GetWait(jumpApexTime);
+                
+                StartCoroutine(Fall());
             }
         }
 

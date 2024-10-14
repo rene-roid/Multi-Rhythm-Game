@@ -35,5 +35,9 @@ namespace _Scripts.Units.Player {
             enemy.GetComponent<DirectionBlock>().BlockHit();
             
         }
+        
+        public bool IsEnemyDetected(){
+            return enemyDetected;
+        }
     }
 }
