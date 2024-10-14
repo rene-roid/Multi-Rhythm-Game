@@ -6,10 +6,12 @@ namespace _Scripts.Units.Player {
     public class HealthController : MonoBehaviour
     {
         private BoxCollider col;
+        private PlayerController playerController;
 
         void Start()
         {
             col = GetComponentInChildren<BoxCollider>();
+            playerController = GetComponent<PlayerController>();
         }
 
 
@@ -68,8 +70,11 @@ namespace _Scripts.Units.Player {
         }
         #endregion
     
-        public void TakeDamage(int damage){
+        public void TakeDamage(int damage, bool jumpable = false){
             if (fixedFrame - lastHitAtFrame < inmuneFrames)
+                return;
+
+            if (playerController.isJumping && jumpable)
                 return;
             
             currentHealth -= damage;

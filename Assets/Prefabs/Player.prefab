@@ -59,6 +59,7 @@ MonoBehaviour:
   - {x: 2, y: 0.71, z: 0}
   - {x: 4, y: 0.71, z: 0}
   dodgeSpeed: 0.1
+  dodgeUpSpeed: 0.13
   runnerPosition: {x: -7, y: 2.5, z: 0}
   jumpDistance: 2
   jumpSpeed: 0.05
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc329be9461be8049b512780927b9197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationState: 0
 --- !u!65 &3194008624068814047
 BoxCollider:
   m_ObjectHideFlags: 0

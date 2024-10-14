@@ -57,15 +57,46 @@ namespace _Scripts.Units.Player {
         #endregion
 
         public void SwitchPlayerMode(PlayerMode mode){
+            if (playerMode == mode) return;
+            
             playerMode = mode;
             
             switch (playerMode){
                 case PlayerMode.Dodge:
+                    SetupDodge();
                     DodgeStart();
                     break;
                 case PlayerMode.Runner:
+                    SetupRunner();
                     RunnerStart();
                     break;
+            }
+
+            void SetupDodge()
+            {
+                // Reset Runner
+                jumping = false;
+                grounded = true;
+                falling = false;
+                
+                // Setup Dodge
+                transform.position = dodgePositions[indexPosition];
+                visual = transform.GetChild(0).gameObject;
+                isJumping = false;
+            }
+            
+            void SetupRunner()
+            {
+                // Reset Dodge
+                isDodging = false;
+                
+                // Setup Runner
+                jumping = false;
+                grounded = true;
+                falling = false;
+                transform.position = runnerPosition;
+                groundPosition = transform.position;
+                ceilingPosition = groundPosition + Vector3.up * jumpDistance;
             }
         }
         
@@ -85,15 +116,22 @@ namespace _Scripts.Units.Player {
         [Header("Dodge Settings")]
         public Vector3[] dodgePositions;
         [SerializeField] private float dodgeSpeed = 5f;
+        [SerializeField] private float dodgeUpSpeed = .13f;
 
         private int indexPosition = 2;
         private int lastIndex = 2;
         
         private float clock = 0f;
         private bool isDodging = false;
+        public bool isJumping { get => jumping;
+            private set => jumping = value;
+        }
+        private GameObject visual;
 
         private void DodgeStart(){
             transform.position = dodgePositions[indexPosition];
+            visual = transform.GetChild(0).gameObject;
+            isJumping = false;
         }
 
         private void DodgeFixedUpdate()
@@ -112,6 +150,11 @@ namespace _Scripts.Units.Player {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 DodgeMovement(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                Jump();
             }
         }
 
@@ -148,6 +191,51 @@ namespace _Scripts.Units.Player {
             }
         }
         
+        private void Jump() {
+            if (isJumping) return;
+            
+            isJumping = true;
+            StartCoroutine(JumpRoutine());
+
+            IEnumerator JumpRoutine(){
+                var curr = visual.transform.localPosition;
+                var initPos = new Vector3(0, -0.5f, 0);
+                var target = new Vector3(0, -0.5f + 1, 0);
+                
+                var timer = 0f;
+
+                while (curr != target){
+                    if (playerMode == PlayerMode.Runner) yield break;
+
+                    curr = Vector3.Lerp(initPos, target, timer / dodgeUpSpeed);
+                    timer += Time.deltaTime;
+                    visual.transform.localPosition = new Vector3(0, curr.y, 0);
+                    
+                    yield return null;
+                }
+                
+                // yield return Helpers.GetWait(.1f);
+                
+                curr = visual.transform.localPosition;
+                initPos = new Vector3(0, curr.y, 0);
+                target = new Vector3(0, -0.5f, 0);
+                
+                timer = 0f;
+
+                while (curr != target){
+                    if (playerMode == PlayerMode.Runner) yield break;
+
+                    curr = Vector3.Lerp(initPos, target, timer / dodgeUpSpeed);
+                    timer += Time.deltaTime;
+                    visual.transform.localPosition = new Vector3(0, curr.y, 0);
+                    
+                    yield return null;
+                }
+                
+                isJumping = false;
+            }
+        }
+
         #endregion
 
         #region Runner

@@ -2035,6 +2035,8 @@ MonoBehaviour:
   runnerSpawner: {fileID: 1943949017}
   gameManager: {fileID: 1457336040}
   SpawnDelay: 0.5
+  blocks: []
+  blockPrefab: {fileID: 5233990106009774955, guid: d9f31d8dd746b6e4896b8e693229ae50, type: 3}
 --- !u!1 &629593829
 GameObject:
   m_ObjectHideFlags: 0
