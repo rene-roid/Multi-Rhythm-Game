@@ -29,7 +29,7 @@ namespace _Scripts.Units.Blocks.Dodge {
         private void OnTriggerEnter(Collider other){
             if (other.CompareTag("Player")){
                 var health = other.GetComponent<HealthController>();
-                health.TakeDamage(10);
+                health.TakeDamage(10, _jumpable);
             }
         
             print("Hit!" + other.name);
@@ -54,6 +54,10 @@ namespace _Scripts.Units.Blocks.Dodge {
         
         public void SetTargetPosition(Vector3 targetPosition){
             this.targetPosition = targetPosition;
+        }
+
+        public void SetSpeed(float speed){
+            _speed = speed;
         }
 
         private void MoveBlock(){

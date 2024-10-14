@@ -35,10 +35,13 @@ namespace _Scripts.Managers.Spawners {
             // SpawnBlock(spawnPositionIndex);
         }
         
-        public void SpawnBlock(int spawnPositionIndex = 2) {
+        public GameObject SpawnBlock(int spawnPositionIndex = 2) {
             var newPosition = spawnPoints[spawnPositionIndex].position + difference;
-            DodgeBlock newblock = Instantiate(dodgeBlock, newPosition, Quaternion.identity);
-            newblock.SetTargetPosition(endPoints[spawnPositionIndex].position + difference);
+            DodgeBlock instance = Instantiate(dodgeBlock, newPosition, Quaternion.identity);
+
+            instance.SetTargetPosition(endPoints[spawnPositionIndex].position + difference);
+
+            return instance.gameObject;
         }
     }
 }
