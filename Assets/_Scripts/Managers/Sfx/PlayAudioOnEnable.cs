@@ -18,7 +18,6 @@ namespace _Scripts.Managers.Sfx
 
         private void OnEnable()
         {
-            audioSource ??= GetComponent<AudioSource>();
             audioSource.pitch = UnityEngine.Random.Range(pitchMin, pitchMax);
             audioSource.Play();
         }
