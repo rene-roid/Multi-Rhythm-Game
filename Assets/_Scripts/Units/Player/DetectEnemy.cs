@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.Managers.Pooling;
 using _Scripts.Units.Blocks.Direction;
 using UnityEngine;
 
@@ -34,6 +35,8 @@ namespace _Scripts.Units.Player {
             enemies.Remove(enemy);
             enemy.GetComponent<DirectionBlock>().BlockHit();
             
+            var particle = ParticlePool.pool.GetParticle();
+            particle.transform.position = enemy.transform.position;
         }
         
         public bool IsEnemyDetected(){

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9150136840011333886}
   - component: {fileID: 7184345740463489738}
-  - component: {fileID: 6608673284829938286}
   m_Layer: 0
   m_Name: Particle Pool
   m_TagString: Untagged
@@ -47,15 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolSize: 7
   particlePrefab: {fileID: 6400889498158815644, guid: 45ed52f00fc26d74bad0cee78dae36a9, type: 3}
---- !u!114 &6608673284829938286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325253071428656045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68a0306333e0ef44840f3999798ae1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
