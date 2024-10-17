@@ -176,6 +176,7 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
             level.levelEvents.Add(levelEvent);
         }
 
+        /*
         private void CreateBlocksInput()
         {
             // Dodge, keys 1-2-3-4-5
@@ -221,6 +222,8 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
                 ChangePrespectiveEvent(true);
             }
         }
+        */
+        
         #endregion
 
 
@@ -405,7 +408,7 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         private void Update()
         {
             AudioUpdate();
-            CreateBlocksInput();
+            //CreateBlocksInput();
 
             MoveBlocks();
 

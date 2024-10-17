@@ -1,6 +1,7 @@
 using rene_roid;
 using System;
 using System.Collections;
+using _Scripts.Managers.Input;
 using _Scripts.Managers.Pooling;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,7 +10,8 @@ public enum PlayerMode{
     Dodge,
     Runner
 }
-namespace _Scripts.Units.Player {    
+namespace _Scripts.Units.Player {
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
         #region Internal Variables
@@ -20,9 +22,18 @@ namespace _Scripts.Units.Player {
         private Rigidbody rb;
         
         private int fixedFrame = 0;
+        
+        private PlayerInput playerInput;
+        private FrameInput frameInput;
         #endregion
 
         #region Unity Methods
+
+        private void Awake()
+        {
+            playerInput = GetComponent<PlayerInput>();
+        }
+
         private void Start()
         {
             col = GetComponent<BoxCollider>();
@@ -105,6 +116,7 @@ namespace _Scripts.Units.Player {
         
         private void InputController()
         {
+            frameInput = playerInput.frameInput;
             switch (playerMode){
                 case PlayerMode.Dodge:
                     DodgeInput();
@@ -146,16 +158,16 @@ namespace _Scripts.Units.Player {
         }
 
         private void DodgeInput(){
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if (frameInput.DodgeLeft)
             {
                 DodgeMovement(-1);
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if (frameInput.DodgeRight)
             {
                 DodgeMovement(1);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            if (frameInput.DodgeJump)
             {
                 Jump();
             }
@@ -278,7 +290,7 @@ namespace _Scripts.Units.Player {
             }
             
             // Reset Jump if Airborne and there is an enemy
-            if (JumpInput() && !grounded && (jumping || falling) && topEnemyDetector.IsEnemyDetected()){
+            if (JumpInput() && !grounded && topEnemyDetector.IsEnemyDetected()){
                 print("reset jump");
                 topEnemyDetector.AttackRunnerEnemy();
                 RunnerMovement(2);
@@ -293,23 +305,14 @@ namespace _Scripts.Units.Player {
             }
 
             bool JumpInput(){
-                if (Input.GetKeyDown(KeyCode.Space)) return true;
-                if (Input.GetKeyDown(KeyCode.UpArrow)) return true;
-                if (Input.GetKeyDown(KeyCode.W)) return true;
+                if (frameInput.RunnerUp) return true;
                 return false;
             }
             
             bool FallInput(){
-                if (Input.GetKeyDown(KeyCode.DownArrow)) return true;
-                if (Input.GetKeyDown(KeyCode.S)) return true;
+                if (frameInput.RunnerDown) return true;
                 return false;
             }
-        }
-
-        public void DoubleJump(){
-            topEnemyDetector.AttackRunnerEnemy();
-            RunnerMovement(-1);
-            RunnerMovement(1);
         }
         
         private void RunnerMovement(int direction = 0){

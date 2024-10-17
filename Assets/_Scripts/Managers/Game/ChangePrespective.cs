@@ -15,6 +15,7 @@ namespace _Scripts.Managers.Game
         private bool isOrtho = false;
         private void Update()
         {
+            /*
             if (Input.GetKeyDown(KeyCode.P))
             {
                 if (isOrtho)
@@ -28,6 +29,7 @@ namespace _Scripts.Managers.Game
                     isOrtho = true;
                 }
             }
+            */
         }
 
         public void ChangeOrtho()

@@ -1,59 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+namespace _Scripts.Managers.Input
 {
-    public FrameInput FrameInput { get; private set; }
+    public class PlayerInput : MonoBehaviour
+    {
+        public FrameInput frameInput { get; private set; }
 
-    private void Update() => FrameInput = Gather();
+        private void Update() => frameInput = Gather();
 
-    private PlayerInputActions inputActions;
-    private InputAction move, mouseLeft, mouseRight;
+        private PlayerInputActions inputActions;
+        private InputAction runnerUp, runnerDown, dodgeLeft, dodgeRight, dodgeJump;
 
-    private void Awake() {
-        inputActions = new PlayerInputActions();
+        private void Awake() {
+            inputActions = new PlayerInputActions();
 
-        move = inputActions.Player.Move;
+            runnerUp = inputActions.Runner.Up;
+            runnerDown = inputActions.Runner.Down;
+        
+            dodgeLeft = inputActions.Dodge.Left;
+            dodgeRight = inputActions.Dodge.Right;
+            dodgeJump = inputActions.Dodge.Jump;
+        }
 
-        mouseLeft = inputActions.Player.MouseLeft;
-        mouseRight = inputActions.Player.MouseRight;
+        private void OnEnable() {
+            inputActions ??= new PlayerInputActions();
+            inputActions.Enable();
+        }
+
+        private void OnDisable() => inputActions.Disable();
+
+        private FrameInput Gather() {
+            if (Time.timeScale == 0) return new FrameInput();
+
+            return new FrameInput {
+                RunnerUp = runnerUp.WasPressedThisFrame(),
+                RunnerUpHeld = runnerUp.IsPressed(),
+            
+                RunnerDown = runnerDown.WasPressedThisFrame(),
+                RunnerDownHeld = runnerDown.IsPressed(),
+            
+                DodgeLeft = dodgeLeft.WasPressedThisFrame(),
+                DodgeLeftHeld = dodgeLeft.IsPressed(),
+            
+                DodgeRight = dodgeRight.WasPressedThisFrame(),
+                DodgeRightHeld = dodgeRight.IsPressed(),
+            
+                DodgeJump = dodgeJump.WasPressedThisFrame(),
+                DodgeJumpHeld = dodgeJump.IsPressed()
+            };
+        }
     }
 
-    private void OnEnable() {
-        inputActions ??= new PlayerInputActions();
-        inputActions.Enable();
+    public struct FrameInput {
+        public bool RunnerUp;
+        public bool RunnerUpHeld;
+    
+        public bool RunnerDown;
+        public bool RunnerDownHeld;
+    
+        public bool DodgeLeft;
+        public bool DodgeLeftHeld;
+    
+        public bool DodgeRight;
+        public bool DodgeRightHeld;
+    
+        public bool DodgeJump;
+        public bool DodgeJumpHeld;
     }
-
-    private void OnDisable() => inputActions.Disable();
-
-    private FrameInput Gather() {
-        if (Time.timeScale == 0) return new FrameInput();
-
-        return new FrameInput {
-            Move = move.ReadValue<Vector2>(),
-
-            MouseLeft = mouseLeft.WasPressedThisFrame(),
-            MouseLeftHeld = mouseLeft.IsPressed(),
-            MouseLeftReleased = mouseLeft.WasReleasedThisFrame(),
-
-            MouseRight = mouseRight.triggered,
-            MouseRightHeld = mouseRight.IsPressed(),
-            MouseRightReleased = mouseRight.WasReleasedThisFrame()
-        };
-    }
-}
-
-public struct FrameInput {
-    public Vector2 Move;
-
-    public bool MouseLeft;
-    public bool MouseLeftHeld;
-    public bool MouseLeftReleased;
-
-    public bool MouseRight;
-    public bool MouseRightHeld;
-    public bool MouseRightReleased;
 }
