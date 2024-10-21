@@ -1,6 +1,8 @@
 using System;
+using rene_roid;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace _Scripts.Units.Player {
     public class HealthController : MonoBehaviour
@@ -18,6 +20,7 @@ namespace _Scripts.Units.Player {
         void Update()
         {
             HealthRegen();
+            UpdateUI();
         }
 
         #region Health Controller
@@ -81,6 +84,8 @@ namespace _Scripts.Units.Player {
             if (currentHealth <= 0){
                 Die();
             }
+            
+            damageImage.color = new Color(1, 0, 0, 0.18f);
         
             isRegenerating = false;
         }
@@ -89,5 +94,23 @@ namespace _Scripts.Units.Player {
             Destroy(this.gameObject);
         }
     
+        #region UI
+        [SerializeField] Image healthBar;
+        [SerializeField] Image damageImage;
+
+        private void UpdateUI()
+        {
+            float current = Helpers.FromRangeToPercentage(currentHealth, 0, maxHealth, true);
+            LeanTween.value(gameObject, healthBar.fillAmount, current, 0.5f)
+                .setEase(LeanTweenType.easeOutCirc)
+                .setOnUpdate((float val) => {
+                    healthBar.fillAmount = val;
+                });
+            
+            if (damageImage.color.a > 0){
+                damageImage.color = Color.Lerp(damageImage.color, new Color(1, 0, 0, 0), Time.deltaTime * 2);
+            }
+        }
+        #endregion
     }
 }

@@ -947,11 +947,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fft: {fileID: 1576001380}
-  freqBands: 64
+  freqBands: 8
   objectPrefab: {fileID: 7033225308845654572, guid: 7c2e774c8c39539428a6f1ae9e18c509, type: 3}
   spacing: 4
   scalingStrength: {x: 0, y: 20, z: 0}
-  shape: 1
+  shape: 0
 --- !u!1 &1194546620
 GameObject:
   m_ObjectHideFlags: 0
