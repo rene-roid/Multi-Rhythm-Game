@@ -8,9 +8,12 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
 {
     public class MusicController : MonoBehaviour
     {
+        [Header("Music")]
         public AudioSource audioSource;
         public float musicTime = 0.0f;
         public float musicLength = 0.0f;
+
+        public float bpm = 120;
         
         private PlayerInputActions inputActions;
         private InputAction lmb, rmb;
@@ -42,6 +45,11 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         public Slider musicSlider;
         public TMP_InputField musicTimeInput;
         public TextMeshProUGUI musicPlaceHolder;
+        public TMP_InputField bpmInput;
+        
+        [Header("BPM Grid")]
+        public GridLayoutGroup bpmGrid;
+        public GameObject bpmElementPrefab;
 
         private void Awake()
         {
@@ -76,6 +84,7 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
 
             WaveformStart();
             MusicControlsStart();
+            StartBpmGrid();
         }
 
         private void Update()
@@ -205,6 +214,7 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
             endButton.onClick.AddListener(EndButton);
             musicSlider.onValueChanged.AddListener(MusicSlider);
             musicTimeInput.onEndEdit.AddListener(MusicTimeInput);
+            bpmInput.onEndEdit.AddListener(BpmInput);
         }
         
         private void MusicControlsUpdate()
@@ -265,6 +275,42 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
                 musicTimeInput.text = "";
             }
         }
+
+        private void BpmInput(string value)
+        {
+            if (float.TryParse(value, out float result))
+            {
+                bpm = result;
+                UpdateBpmGrid();
+            }
+        }
+        #endregion
+
+        #region BPM
+        private void StartBpmGrid()
+        {
+            UpdateBpmGrid();
+        }
+
+        private void UpdateBpmGrid()
+        {
+            var bpmCount = (int)(musicLength * (bpm / 60));
+            var availableWidth = waveformImage.rectTransform.rect.width - (bpmCount * bpmGrid.cellSize.x);
+            var bpmElementSpacing = availableWidth / (bpmCount - 1);
+    
+            bpmGrid.spacing = new Vector2(bpmElementSpacing, 0);
+
+            foreach (Transform child in bpmGrid.transform)
+                Destroy(child.gameObject);
+            
+            for (int i = 0; i < bpmCount; i++)
+            {
+                var bpmElement = Instantiate(bpmElementPrefab, bpmGrid.transform);
+                bpmElement.name = (i * (int)(1000 / bpm)).ToString();
+            }
+        }
+
+
 
         #endregion
     }
