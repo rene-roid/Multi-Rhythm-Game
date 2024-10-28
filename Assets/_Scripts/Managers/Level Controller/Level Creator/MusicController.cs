@@ -35,8 +35,6 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         private Vector2 waveformEndPos;
         
         [SerializeField] private bool isDragging = false;
-        [SerializeField] private Vector2 initialMousePos;
-        [SerializeField] private Vector2 initialWaveformPos;
         
         [Header("Music Controls")]
         public Button playPauseButton;
@@ -74,13 +72,6 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         {
             musicTime = audioSource.time;
             musicLength = audioSource.clip.length - 1;
-            
-            // Subscribe to LMB and RMB press/release events
-            lmb.performed += _ => StartDrag();
-            lmb.canceled += _ => StopDrag();
-            
-            rmb.performed += _ => StartDrag();
-            rmb.canceled += _ => StopDrag(true);
 
             WaveformStart();
             MusicControlsStart();
@@ -111,21 +102,12 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         {
             // Move the waveform to the left or right based on the music time
             waveformImage.rectTransform.anchoredPosition = Vector2.Lerp(waveformStartPos, waveformEndPos, musicTime / musicLength);
-            
-            // Start dragging when LMB or RMB is pressed
-            if ((lmb.IsPressed() || rmb.IsPressed()) && IsMouseOverWaveform())
-                isDragging = true;
-            
-            if (isDragging) DragWaveform();
         }
         
-        private void DragWaveform()
+        public void DragWaveform(Vector3 newGameObjectPos)
         {
-            Vector2 currentMousePos = Mouse.current.position.ReadValue();
-            float dragDistance = currentMousePos.x - initialMousePos.x;
-
             // Adjust the waveform's position, clamped within its bounds
-            Vector2 newPos = new Vector2(initialWaveformPos.x + dragDistance, waveformImage.rectTransform.anchoredPosition.y);
+            Vector2 newPos = new Vector2(newGameObjectPos.x, waveformImage.rectTransform.anchoredPosition.y);
             newPos.x = Mathf.Clamp(newPos.x, -width * 0.5f, width * 0.5f); // Ensure it's clamped within the waveform's width
             waveformImage.rectTransform.anchoredPosition = newPos;
 
@@ -136,32 +118,16 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
             audioSource.time = musicTime; // Update the AudioSource's time based on the drag
         }
 
-        private bool IsMouseOverWaveform()
+        public void StartDrag()
         {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                waveformImage.rectTransform, mousePos, null, out Vector2 localPos);
-            
-            return waveformImage.rectTransform.rect.Contains(localPos);
+            isDragging = true;
+            audioSource.Pause();
         }
 
-        private void StartDrag()
+        public void StopDrag(bool isLmb = false)
         {
-            if (IsMouseOverWaveform())
-            {
-                isDragging = true;
-                initialMousePos = Mouse.current.position.ReadValue();
-                initialWaveformPos = waveformImage.rectTransform.anchoredPosition;
-                audioSource.Pause();
-            }
-        }
-
-        private void StopDrag(bool isLmb = false)
-        {
-            if (!isDragging) return;
             isDragging = false;
-            if (isLmb)
-                audioSource.Play();
+            if (isLmb) audioSource.Play();
         }
 
         private Texture2D CreateWaveform()
