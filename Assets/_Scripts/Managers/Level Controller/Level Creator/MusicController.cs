@@ -21,6 +21,7 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         [Header("Waveform")] 
         public int width = 2048;
         public int height = 256;
+        public int widthMultiplier = 100;
         public Color background = Color.clear;
         public Color foreground = Color.white;
         
@@ -38,6 +39,8 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         
         [Header("Music Controls")]
         public Button playPauseButton;
+        public Sprite playSprite;
+        public Sprite pauseSprite;
         public Button startButton;
         public Button endButton;
         public Slider musicSlider;
@@ -82,18 +85,30 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         {
             MusicControlsUpdate();
             UpdateWaveform();
+            UpdateBpm();
         }
 
         #region Waveform
         private void WaveformStart()
         {
-            if (autoGenWidth) width = (int)audioSource.clip.length * 100;
-            Texture2D texture = CreateWaveform();
-            Rect rect = new Rect(Vector2.zero, new Vector2(width, height));
-            waveformImage.sprite = Sprite.Create(texture, rect, Vector2.zero);
+            if (autoGenWidth) width = (int)audioSource.clip.length * widthMultiplier;
+
             waveformImage.rectTransform.sizeDelta = new Vector2(width, height);
             waveformImage.rectTransform.anchoredPosition = new Vector2(width * 0.5f, 10);
-            
+
+            Texture2D[] textures = CreateWaveform();
+            for (int i = 0; i < textures.Length; i++)
+            {
+                GameObject newWaveformImage = new GameObject("WaveformImagePart" + i);
+                Image imageComponent = newWaveformImage.AddComponent<Image>();
+                Rect rect = new Rect(0, 0, textures[i].width, height); // Update rect dimensions for each texture
+                imageComponent.sprite = Sprite.Create(textures[i], rect, Vector2.zero);
+                RectTransform rectTransform = newWaveformImage.GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(textures[i].width, height);
+                rectTransform.anchoredPosition = new Vector2(i * textures[i].width, 10);
+                newWaveformImage.transform.SetParent(waveformImage.transform);
+            }
+
             waveformStartPos = waveformImage.rectTransform.anchoredPosition;
             waveformEndPos = new Vector2(-width * 0.5f, 10);
         }
@@ -130,44 +145,64 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
             if (isLmb) audioSource.Play();
         }
 
-        private Texture2D CreateWaveform()
+        private Texture2D[] CreateWaveform()
         {
+            int maxTextureWidth = 8192;
+            int numTextures = Mathf.CeilToInt((float)width / maxTextureWidth);
+            int textureWidth = width / numTextures;
             int halfHeight = height / 2;
             float heightScale = (float)height * 0.75f;
-
-            Texture2D texture2D = new Texture2D(width, height, TextureFormat.RGBA32, false);
-            waveform = new float[width];
             
+            var gridLayout = waveformImage.GetComponent<GridLayoutGroup>();
+            if (gridLayout)
+            {
+                Vector2 cellSize = gridLayout.cellSize;
+                cellSize.x = width / numTextures;
+                gridLayout.cellSize = cellSize;
+            }
+
+            Texture2D[] textures = new Texture2D[numTextures];
+            waveform = new float[width];
+
             sampleSize = audioSource.clip.samples * audioSource.clip.channels;
             samples = new float[sampleSize];
             audioSource.clip.GetData(samples, 0);
-            
+
             int packSize = (sampleSize / width);
             for (int w = 0; w < width; w++)
             {
                 waveform[w] = Mathf.Abs(samples[w * packSize]);
             }
-            
-            for (int x = 0; x < width; x++)
+
+            for (int t = 0; t < numTextures; t++)
             {
-                for (int y = 0; y < height; y++)
+                textures[t] = new Texture2D(textureWidth, height, TextureFormat.RGBA32, false);
+                int startX = t * textureWidth;
+                int endX = Mathf.Min(startX + textureWidth, width);
+
+                for (int x = 0; x < textureWidth; x++)
                 {
-                    texture2D.SetPixel(x, y, background);
+                    for (int y = 0; y < height; y++)
+                    {
+                        textures[t].SetPixel(x, y, background);
+                    }
                 }
-            }
-            
-            for (int x = 0; x < width; x++)
-            {
-                int y = (int)(waveform[x] * heightScale);
-                for (int i = 0; i < y; i++)
+
+                for (int x = startX; x < endX; x++)
                 {
-                    texture2D.SetPixel(x, halfHeight + i, foreground);
-                    texture2D.SetPixel(x, halfHeight - i, foreground);
+                    int localX = x - startX;
+                    int y = (int)(waveform[x] * heightScale);
+                    for (int i = 0; i < y; i++)
+                    {
+                        textures[t].SetPixel(localX, halfHeight + i, foreground);
+                        textures[t].SetPixel(localX, halfHeight - i, foreground);
+                    }
                 }
+
+                textures[t].Apply();
             }
-            
-            texture2D.Apply();
-            return texture2D;
+
+            return textures;
         }
         #endregion
 
@@ -209,9 +244,15 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         private void PlayPauseButton()
         {
             if (audioSource.isPlaying)
+            {
                 audioSource.Pause();
+                playPauseButton.image.sprite = playSprite;
+            }
             else
+            {
                 audioSource.Play();
+                playPauseButton.image.sprite = pauseSprite;
+            }
         }
         
         private void StartButton()
@@ -257,27 +298,35 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
         {
             UpdateBpmGrid();
         }
+        
+        private void UpdateBpm()
+        {
+            RectTransform bpmGridRectTransform = bpmGrid.GetComponent<RectTransform>();
+            bpmGridRectTransform.anchoredPosition = waveformImage.rectTransform.anchoredPosition;
+            bpmGridRectTransform.sizeDelta = waveformImage.rectTransform.sizeDelta;
+        }
 
         private void UpdateBpmGrid()
         {
             var bpmCount = (int)(musicLength * (bpm / 60));
+            RectTransform bpmGridRectTransform = bpmGrid.GetComponent<RectTransform>();
             var availableWidth = waveformImage.rectTransform.rect.width - (bpmCount * bpmGrid.cellSize.x);
             var bpmElementSpacing = availableWidth / (bpmCount - 1);
-    
-            bpmGrid.spacing = new Vector2(bpmElementSpacing, 0);
 
+            bpmGrid.spacing = new Vector2(bpmElementSpacing, 0);
+            bpmGridRectTransform.sizeDelta = waveformImage.rectTransform.sizeDelta;
+
+            // Clean up existing children
             foreach (Transform child in bpmGrid.transform)
                 Destroy(child.gameObject);
-            
+    
+            // Instantiate new BPM elements
             for (int i = 0; i < bpmCount; i++)
             {
                 var bpmElement = Instantiate(bpmElementPrefab, bpmGrid.transform);
                 bpmElement.name = (i * (int)(1000 / bpm)).ToString();
             }
         }
-
-
-
         #endregion
     }
 }

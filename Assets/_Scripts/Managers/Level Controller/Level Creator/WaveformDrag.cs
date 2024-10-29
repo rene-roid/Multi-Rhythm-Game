@@ -28,6 +28,12 @@ namespace _Scripts.Managers.Level_Controller.Level_Creator
             
             musicController.DragWaveform(image.rectTransform.anchoredPosition);
             isLmb = UnityEngine.Input.GetMouseButton(0);
+            
+            // float scroll = UnityEngine.Input.GetAxis("Mouse ScrollWheel");
+            // if (scroll != 0f)
+            // {
+            //     OnMouseScroll(scroll);
+            // }
         }
 
         public void OnEndDrag(PointerEventData eventData)
